@@ -3,11 +3,11 @@
   "version": "1.3.29",
   "description": "base synth for hydra-editor",
   "type": "module",
-  "main": "./src/index.js",
+  "main": "./src/hydra-synth.js",
   "exports": {
     ".": {
       "import": "./src/hydra-synth.js",
-      "require": "./src/index.js"
+      "require": "./dist/hydra-synth.js"
     },
     "./src/glsl/glsl-functions.js": {
       "import": "./src/glsl/glsl-functions.js",
@@ -16,9 +16,8 @@
   },
   "unpkg": "./dist/hydra-synth.js",
   "scripts": {
-    "dev-ssl": "budo ./dev/index.js --ssl --open --live --port 8000 --",
-    "dev": "budo ./dev/index.js --open --live --port 8000 -- -p esmify",
-    "build": "browserify ./src/index.js -p esmify --standalone Hydra > dist/hydra-synth.js"
+    "build": "npx rollup -c",
+    "dev": "npx rollup -w -c rollup.dev.config.js"
   },
   "repository": {
     "type": "git",
@@ -43,8 +42,12 @@
     "regl": "^1.3.9"
   },
   "devDependencies": {
-    "browserify": "^17.0.0",
-    "budo": "^11.8.4",
-    "esmify": "^2.1.1"
+    "@rollup/plugin-commonjs": "^25.0.7",
+    "@rollup/plugin-node-resolve": "^15.2.3",
+    "@rollup/plugin-terser": "^0.4.4",
+    "rollup": "^4.9.1",
+    "rollup-plugin-browserslist": "github:jonathantneal/rollup-plugin-browser-resolve",
+    "rollup-plugin-livereload": "^2.0.5",
+    "rollup-plugin-serve": "^1.1.1"
   }
 }

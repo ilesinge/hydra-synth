@@ -65,3 +65,6 @@ typings/
 
 # jetbrains config
 .idea
+
+# Rollup dev server bundle
+dev/index.bundle.js
